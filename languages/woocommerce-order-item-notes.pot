@@ -32,3 +32,6 @@ msgstr ""
 #. Name of the plugin
 msgid "WooCommerce Order Item Notes"
 msgstr ""
+
+msgid "Notes"
+msgstr ""
