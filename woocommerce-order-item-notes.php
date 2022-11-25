@@ -43,6 +43,7 @@ if (!class_exists('WooCommerceOrderItemNotes')) {
 		function __construct() {
 			add_action('init', array(&$this, 'redstar_woocommerceorderitemnotes_init'));
 			add_action('woocommerce_after_order_itemmeta', array(&$this, 'redstar_woocommerceorderitemnotes_admin_order_item_line_item_html'), 1000, 2);
+            add_filter('woocommerce_hidden_order_itemmeta', array(&$this, 'redstar_woocommerceorderitemnotes_hidden_order_itemmeta'));
 		}
 
         function redstar_woocommerceorderitemnotes_init() {
@@ -56,6 +57,11 @@ if (!class_exists('WooCommerceOrderItemNotes')) {
             echo '<textarea name="order_item_note_' . $item_id . '" spellcheck="true" autocomplete="off">';
             echo $notes;
             echo '</textarea>';
+        }
+
+        function redstar_woocommerceorderitemnotes_hidden_order_itemmeta($hidden_itemmeta) {
+            array_push($hidden_itemmeta, '_order_item_note');
+            return $hidden_itemmeta;
         }
     }
 }
