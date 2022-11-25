@@ -42,7 +42,7 @@ if (!class_exists('WooCommerceOrderItemNotes')) {
 	{
 		function __construct() {
 			add_action('init', array(&$this, 'redstar_woocommerceorderitemnotes_init'));
-			add_action('woocommerce_after_order_itemmeta', array(&$this, 'redstar_woocommerceorderitemnotes_admin_order_item_line_item_html'), 1000, 2);
+			add_action('woocommerce_after_order_itemmeta', array(&$this, 'redstar_woocommerceorderitemnotes_after_order_itemmeta'), 1000, 2);
             add_filter('woocommerce_hidden_order_itemmeta', array(&$this, 'redstar_woocommerceorderitemnotes_hidden_order_itemmeta'));
             add_filter('wp_insert_post_data', array(&$this, 'redstar_woocommerceorderitemnotes_insert_post_data'), 10, 2);
 			add_action('pre_post_update', array(&$this, 'redstar_woocommerceorderitemnotes_pre_post_update'), 10, 2);
@@ -52,7 +52,7 @@ if (!class_exists('WooCommerceOrderItemNotes')) {
             load_plugin_textdomain('woocommerce-order-item-notes', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
         }
     
-        function redstar_woocommerceorderitemnotes_admin_order_item_line_item_html($item_id, $item) {
+        function redstar_woocommerceorderitemnotes_after_order_itemmeta($item_id, $item) {
             $notes = $item->get_meta('_order_item_note');
             
             echo '<h4>' . __('Notes', 'woocommerce-order-item-notes') . '</h4>';            
