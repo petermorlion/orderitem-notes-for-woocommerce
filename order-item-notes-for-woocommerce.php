@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: WooCommerce Order Item Notes
-Plugin URI: https://redstar.be
+Plugin Name: Order Item Notes For WooCommerce
+Plugin URI: https://github.com/petermorlion/orderitem-notes-for-woocommerce
 Description: A WooCommerce plugin to add notes or comments to individual order items of an order.
 Version: 2.0
 Author: Peter Morlion
