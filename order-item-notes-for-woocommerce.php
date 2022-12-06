@@ -6,7 +6,7 @@ Description: A WooCommerce plugin to add notes or comments to individual order i
 Version: 2.0
 Author: Peter Morlion
 Author URI: https://redstar.be
-Text Domain: woocommerce-order-item-notes
+Text Domain: order-item-notes-for-woocommerce
 */
 
 //uncomment following two lines to see php errors
@@ -49,13 +49,13 @@ if (!class_exists('WooCommerceOrderItemNotes')) {
 		}
 
         function redstar_woocommerceorderitemnotes_init() {
-            load_plugin_textdomain('woocommerce-order-item-notes', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+            load_plugin_textdomain('order-item-notes-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
         }
     
         function redstar_woocommerceorderitemnotes_after_order_itemmeta($item_id, $item) {
             $notes = $item->get_meta('_order_item_note');
             
-            echo '<h4>' . __('Notes', 'woocommerce-order-item-notes') . '</h4>';            
+            echo '<h4>' . __('Notes', 'order-item-notes-for-woocommerce') . '</h4>';            
             echo '<textarea name="order_item_note_' . $item_id . '" spellcheck="true" autocomplete="off">';
             echo $notes;
             echo '</textarea>';
