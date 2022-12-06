@@ -3,7 +3,7 @@
 Plugin Name: Order Item Notes For WooCommerce
 Plugin URI: https://github.com/petermorlion/orderitem-notes-for-woocommerce
 Description: A WooCommerce plugin to add notes or comments to individual order items of an order.
-Version: 1.0
+Version: 1.0.1
 Author: Peter Morlion
 Author URI: https://redstar.be
 Text Domain: order-item-notes-for-woocommerce
