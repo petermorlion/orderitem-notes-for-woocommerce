@@ -56,8 +56,8 @@ if (!class_exists('WooCommerceOrderItemNotes')) {
             $notes = $item->get_meta('_order_item_note');
             
             echo '<h4>' . esc_html_e('Notes', 'order-item-notes-for-woocommerce') . '</h4>';            
-            echo '<textarea name="order_item_note_' . $item_id . '" spellcheck="true" autocomplete="off">';
-            echo $notes;
+            echo '<textarea name="order_item_note_' . esc_attr($item_id) . '" spellcheck="true" autocomplete="off">';
+            echo esc_textarea($notes);
             echo '</textarea>';
         }
 
