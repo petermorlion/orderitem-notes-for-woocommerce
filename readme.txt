@@ -33,5 +33,12 @@ Yes, it probably will, but I haven't tested it on older versions. Let me know if
 
 == Changelog ==
 
+= 1.0.1 =
+* Adressed required changes for Wordpress.org hosting
+
 = 1.0 =
 * First working version.
+
+== Workflow ==
+This plugin is developed on [GitHub](https://github.com/petermorlion/orderitem-notes-for-woocommerce),
+but released to SVN using [this workflow](https://teleogistic.net/2011/05/23/revisiting-git-github-and-the-wordpress-org-plugin-repository/).
