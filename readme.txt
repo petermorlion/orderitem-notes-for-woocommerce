@@ -3,7 +3,7 @@ Contributors: petermorlion
 Tags: woocommerce, notes
 Requires at least: 6.1.1
 Tested up to: 6.3
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,10 @@ Yes, it probably will, but I haven't tested it on older versions. Let me know if
 1. Adding notes to individual order items of a WooCommerce order
 
 == Changelog ==
+
+= 1.0.4 =
+* Fix update bug
+* Fix layout bug
 
 = 1.0.3 =
 * Tested with WordPress 6.3
