@@ -59,6 +59,8 @@ In short: develop in Git and on GitHub as normal. Then, something like this (not
 * git checkout master
 * git rebase trunk
 * git svn dcommit
+* git rebase origin/master master
+* git push
 
 To release:
 
