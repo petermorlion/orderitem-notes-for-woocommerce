@@ -45,6 +45,7 @@ if (!class_exists('WooCommerceOrderItemNotes')) {
             add_action('init', array(&$this, 'redstar_woocommerceorderitemnotes_init'));
             add_action('woocommerce_after_order_itemmeta', array(&$this, 'redstar_woocommerceorderitemnotes_after_order_itemmeta'), 1000, 2);
             add_filter('woocommerce_hidden_order_itemmeta', array(&$this, 'redstar_woocommerceorderitemnotes_hidden_order_itemmeta'));
+            add_filter('wp_insert_post_data', array(&$this, 'redstar_woocommerceorderitemnotes_insert_post_data'), 10, 2);
             add_action('pre_post_update', array(&$this, 'redstar_woocommerceorderitemnotes_pre_post_update'), 10, 2);
         }
 
@@ -62,11 +63,7 @@ if (!class_exists('WooCommerceOrderItemNotes')) {
                 esc_html_e('Notes', 'order-item-notes-for-woocommerce');
                 ?>
             </h4>
-            <textarea name="order_item_note_<?php echo esc_attr($item_id); ?>" spellcheck="true" autocomplete="off">
-            <?php
-            echo esc_textarea($notes);
-            ?>
-            </textarea>
+            <textarea name="order_item_note_<?php echo esc_attr($item_id); ?>" spellcheck="true" autocomplete="off"><?php echo esc_textarea($notes);?></textarea>
 <?php
         }
 
@@ -76,8 +73,25 @@ if (!class_exists('WooCommerceOrderItemNotes')) {
             return $hidden_itemmeta;
         }
 
+        function redstar_woocommerceorderitemnotes_insert_post_data($data, $postarr) {
+            wc_get_logger()->info("insert", array('source' => 'order_item_notes_for_woocommerce'));
+            foreach ($postarr as $post_field => $post_value) {
+                if (!str_starts_with($post_field, 'order_item_note_')) {
+                    continue;
+                }
+
+                $order_item_id = intval(substr($post_field, 16));
+                $order_item = new WC_Order_Item_Product($order_item_id);
+                $order_item->update_meta_data('_order_item_note', $post_value);
+                $order_item->save();
+            }
+
+            return $data;
+        }
+
         function redstar_woocommerceorderitemnotes_pre_post_update($post_id, $data)
         {
+            wc_get_logger()->info("update", array('source' => 'order_item_notes_for_woocommerce'));
             foreach ($data as $post_field => $post_value) {
                 if (!str_starts_with($post_field, 'order_item_note_')) {
                     continue;
