@@ -53,8 +53,9 @@ Yes, it probably will, but I haven't tested it on older versions. Let me know if
 This plugin is developed on [GitHub](https://github.com/petermorlion/orderitem-notes-for-woocommerce),
 but released to SVN using [this workflow](https://teleogistic.net/2011/05/23/revisiting-git-github-and-the-wordpress-org-plugin-repository/).
 
-In short: develop in Git and on GitHub as normal. Then, to push your commits:
+In short: develop in Git and on GitHub as normal. Then, something like this (not 100% verified):
 
+* git fetch
 * git checkout master
 * git rebase trunk
 * git svn dcommit
