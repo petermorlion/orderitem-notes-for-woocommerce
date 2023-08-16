@@ -52,3 +52,15 @@ Yes, it probably will, but I haven't tested it on older versions. Let me know if
 == Workflow ==
 This plugin is developed on [GitHub](https://github.com/petermorlion/orderitem-notes-for-woocommerce),
 but released to SVN using [this workflow](https://teleogistic.net/2011/05/23/revisiting-git-github-and-the-wordpress-org-plugin-repository/).
+
+In short: develop in Git and on GitHub as normal. Then, to push your commits:
+
+* git checkout master
+* git rebase trunk
+* git svn dcommit
+
+To release:
+
+* create the tag in git as usual
+* git svn tag vx.x.x
+
