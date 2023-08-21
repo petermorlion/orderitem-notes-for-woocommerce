@@ -3,7 +3,7 @@
 Plugin Name: Order Item Notes For WooCommerce
 Plugin URI: https://github.com/petermorlion/orderitem-notes-for-woocommerce
 Description: A WooCommerce plugin to add notes or comments to individual order items of an order.
-Version: 1.0.4
+Version: 1.1.0
 Author: Peter Morlion
 Author URI: https://redstar.be
 Text Domain: order-item-notes-for-woocommerce
@@ -47,6 +47,13 @@ if (!class_exists('WooCommerceOrderItemNotes')) {
             add_filter('woocommerce_hidden_order_itemmeta', array(&$this, 'redstar_woocommerceorderitemnotes_hidden_order_itemmeta'));
             add_filter('wp_insert_post_data', array(&$this, 'redstar_woocommerceorderitemnotes_insert_post_data'), 10, 2);
             add_action('pre_post_update', array(&$this, 'redstar_woocommerceorderitemnotes_pre_post_update'), 10, 2);
+            add_action( 'before_woocommerce_init', array(&$this, 'redstar_woocommerceorderitemnotes_declare_hpos_compatibility'), 10, 0);
+        }
+
+        function redstar_woocommerceorderitemnotes_declare_hpos_compatibility() {
+            if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+                \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, false );
+            }
         }
 
         function redstar_woocommerceorderitemnotes_init()
