@@ -3,7 +3,7 @@ Contributors: petermorlion
 Tags: woocommerce, notes
 Requires at least: 6.1.1
 Tested up to: 6.3
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,9 @@ Yes, it probably will, but I haven't tested it on older versions. Let me know if
 1. Adding notes to individual order items of a WooCommerce order
 
 == Changelog ==
+
+= 1.1.1 =
+* Remove calls to wc_get_logger() because it interferes with other plugins that save posts before WooCommerce is set up.
 
 = 1.1.0 =
 * Declare HPOS compatibility
@@ -70,3 +73,13 @@ To release:
 * create the tag in git as usual
 * git svn tag vx.x.x
 
+To set this up initially:
+
+* git clone <this_git_repo>
+* cd <the_local_dir>
+* git svn init <the_svn_repo>/trunk
+* svn log <the_svn_repo>
+* take the first revision
+* git svn fetch -r <first_revision> (creates git-svn branch)
+* git rebase git-svn
+* git svn dcommit
