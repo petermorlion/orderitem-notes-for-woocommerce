@@ -2,7 +2,7 @@
 Contributors: petermorlion
 Tags: woocommerce, notes
 Requires at least: 6.1.1
-Tested up to: 6.3
+Tested up to: 6.5
 Stable tag: 1.1.1
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -32,6 +32,9 @@ Yes, it probably will, but I haven't tested it on older versions. Let me know if
 1. Adding notes to individual order items of a WooCommerce order
 
 == Changelog ==
+
+= 1.2.0 =
+* Tested with Wordpress 6.5
 
 = 1.1.1 =
 * Remove calls to wc_get_logger() because it interferes with other plugins that save posts before WooCommerce is set up.
@@ -64,6 +67,8 @@ In short: develop in Git and on GitHub as normal. Then, something like this (not
 * git fetch
 * git checkout master
 * git rebase trunk
+* git svn fetch -r 2974662:HEAD
+* git svn rebase
 * git svn dcommit
 * git rebase origin/master master
 * git push
